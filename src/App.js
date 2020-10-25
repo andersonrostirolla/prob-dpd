@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Input, Label, Combinatorics, DistributionTable } from "./components";
-import { Combinatorics as CombinatoricsClass, Distribution } from "./Data";
+import { Combinatorics as CombinatoricsClass, Distribution } from "./data";
 
 class App extends Component {
   constructor(props) {
