@@ -21,6 +21,8 @@ class Input extends Component {
           <input
             type="number"
             placeholder={this.props.placeholder}
+            disabled={this.props.disabled}
+            value={this.props.value}
             onChange={this.handleChangeQuantity}
           ></input>
         </header>
