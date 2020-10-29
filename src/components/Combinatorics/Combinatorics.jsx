@@ -7,19 +7,25 @@ class Combinatorics extends Component {
       <section className="combinatorics">
         <header className="combinatorics_header">
           <table>
-            <td>Combinações</td>
-            <tr>
+            <thead>
+              <tr>
+                <th>Combinações</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
               {this.props.combinatorics.combinatoricsList.map((combinatorics, index) => {
                 return (
                   <tr
                     key={index}
                     className="list-combinatorics"
                   >
-                    C {this.props.speciman},{index} = {combinatorics}
+                    <td>C {this.props.speciman},{index}</td>
+                    <td>{combinatorics}</td>
                   </tr>
                 );
               })}
-            </tr>
+            </tbody>
           </table>
         </header>
       </section>

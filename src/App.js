@@ -36,37 +36,54 @@ class App extends Component {
   }
 
   render() {
+    const state = this.state;
+    const components = 
+    <div className="tables">
+      <Combinatorics
+        speciman={this.state.quantitySpeciman}
+        combinatorics={this.combinatorics}
+      />
+      <DistributionTable
+        distribution={this.distribution}
+      />
+    </div>;
+    const showCombinatoricsAndDistribution = (state.quantitySuccess &&
+      state.quantityFail &&
+      state.quantitySpeciman) ? components : <Label text={"Aguardando dados de entrada"} />;
     return (
       <div className="App">
         <header className="App-header">
-          <Label text={"Sucesso:"} />
-          <Input
-            placeholder={"Digite o valor para sucesso"}
-            value={this.state.quantitySuccess}
-            onQuantityChange={this.handleSuccessChange}
-          />
+          <section className="inputs">
+            <div className="app_inputs">
+              <Label text={"Sucesso: "} />
+              <Input
+                placeholder={"Digite o valor para sucesso"}
+                value={this.state.quantitySuccess}
+                type={"number"}
+                onQuantityChange={this.handleSuccessChange}
+              />
+            </div>
+            <div className="app_inputs">
+              <Label text={"Falha: "} />
+              <Input
+                placeholder={"Digite o valor para falha"}
+                value={this.state.quantityFail}
+                type={"number"}
+                disabled={true}
+              />
+            </div>
 
-          <Label text={"Falha:"} />
-          <Input
-            placeholder={"Digite o valor para falha"}
-            value={this.state.quantityFail}
-            disabled={true}
-          />
+            <div className="app_inputs">
+              <Label text={"Numero de amostra: "} />
+              <Input
+                placeholder={"Digite o valor para amostra"}
+                type={"number"}
+                onQuantityChange={this.handleSpecimanChange}
+              />
+            </div>
+          </section>
 
-          <Label text={"Numero de amostra"} />
-          <Input
-            placeholder={"Digite o valor para amostra"}
-            onQuantityChange={this.handleSpecimanChange}
-          />
-
-          <Combinatorics
-            speciman={this.state.quantitySpeciman}
-            combinatorics={this.combinatorics}
-          />
-
-          <DistributionTable
-            distribution={this.distribution}
-          />
+          {showCombinatoricsAndDistribution}
         </header>
       </div>
     );
